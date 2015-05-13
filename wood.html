@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wood Supply Calculator</title>
+<style>
+#length{position: absolute; top: 30%; left: 39%;}
+#quantity{position: absolute; top: 39%; left: 39%;}
+#calc{position: absolute; top: 50%; left: 43%;}
+#answer{position: absolute; top: 56%; left: 42.5%;}
+</style>
+<script>
+function calculate(){
+//components
+var l = document.getElementById('length');
+var q = document.getElementById('quantity');
+var c = document.getElementById('calc');
+var a = document.getElementById('answer');
+
+//values
+var vL = parseInt(l.value), vQ = parseInt(q.value);
+var p = (vL * vQ)/12;
+
+var temp = "";
+//Changes location
+a.style.left = "35.5%";
+//Checks for wood needed
+if((p < 6 || p === 6) && p < 8){answer.innerHTML = "You need a 6 foot long piece of wood";}
+else if((p > 6 || p === 8) && p < 10){answer.innerHTML = "You need a 8 foot long piece of wood";}
+else if((p > 8 || p === 10) && p < 12){answer.innerHTML = "You need a 10 foot long piece of wood";}
+else if(p < 12 || p === 12){answer.innerHTML = "You need a 12 foot long piece of wood";}
+else{temp = "You need a 12 foot long piece of wood<br>"; complex(p, temp);}
+vl = 0;
+vQ = 0;
+p = 0;
+temp = "";
+}
+function complex(pe, te){
+  var counter = 0;
+  pe -= 12;
+  while((pe - 12) > 0){
+   pe -= 12;
+   te += "You need a 12 foot long piece of wood<br>";
+}
+var a = document.getElementById('answer');
+if((pe < 6 || pe === 6) && pe < 8){te +="You need a 6 foot long piece of wood";}
+else if((pe > 6 || pe === 8) && pe < 10){te += "You need a 8 foot long piece of wood";}
+else if((pe > 8 || pe === 10) && p < 12){te += "You need a 10 foot long piece of wood";}
+else if(pe < 12 || pe === 12){te += "You need a 12 foot long piece of wood";}
+a.innerHTML = te;  
+}
+</script>
+</head>
+<body>
+<input type="text" id="length" placeholder="Length of the wood"/>
+<input type="text" id="quantity" placeholder="Quantity"/>
+<button id="calc" onClick="calculate()">Calculate</button>
+<p id="answer">Answer Here</p>
+</body>
+</html>
